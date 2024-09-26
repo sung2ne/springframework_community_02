@@ -11,5 +11,4 @@ public class BoardVO {
 	private String content; // 내용
 	private String passwd;	// 비밀번호
 	private Date createdAt; // 등록일시
-	private String keyword;	// 검색어
 }

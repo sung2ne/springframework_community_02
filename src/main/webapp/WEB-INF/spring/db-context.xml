@@ -9,7 +9,7 @@
 	
 	<!-- 데이터베이스 연결 풀 설정 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />  <!-- 오라클 드라이버 설정 -->
+		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />  <!-- 드라이버 설정 -->
 		<property name="url" value="" />  <!-- DB URL -->
 		<property name="username" value="" />  <!-- DB 사용자명 -->
 		<property name="password" value="" />  <!-- DB 비밀번호 -->
@@ -29,6 +29,11 @@
 	<!-- MyBatis Mapper 스캐너 설정 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 	    <property name="basePackage" value="com.test.community.mapper" />
+	</bean>
+	
+	<!-- 트랜잭션 매니저 추가 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
 	<!-- 트랜잭션 매니저 설정 -->
